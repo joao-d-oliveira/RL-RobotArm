@@ -163,7 +163,7 @@ class PPOModel(LearningModel):
 
     def create_ppo_optimizer(self, probs, old_probs, value, entropy, beta, epsilon, lr, max_step):
         """
-        Creates training-specific Tensorflow ops for PPO models.
+        Creates training-specific Tensorflow ops for PPO saved_models.
         :param probs: Current policy probabilities
         :param old_probs: Past policy probabilities
         :param value: Current value estimate
