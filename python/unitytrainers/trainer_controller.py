@@ -45,12 +45,12 @@ class TrainerController(object):
         # Recognize and use docker volume if one is passed as an argument
         if docker_target_name == '':
             self.docker_training = False
-            self.model_path = './models/{run_id}'.format(run_id=run_id)
+            self.model_path = './saved_models/{run_id}'.format(run_id=run_id)
             self.curriculum_file = curriculum_file
             self.summaries_dir = './summaries'
         else:
             self.docker_training = True
-            self.model_path = '/{docker_target_name}/models/{run_id}'.format(
+            self.model_path = '/{docker_target_name}/saved_models/{run_id}'.format(
                 docker_target_name=docker_target_name,
                 run_id=run_id)
             if env_path is not None:
