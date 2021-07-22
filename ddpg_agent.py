@@ -21,6 +21,8 @@ class Agent:
                  tau = 1e-3,
                  lr_actor = 1e-4,
                  lr_critic = 1e-3,
+                 fc1_units=400,
+                 fc2_units=300,
                  weight_decay = 0,  # L2 weight decay
                  noise_mu=0.,
                  noise_theta=0.15,
@@ -35,6 +37,21 @@ class Agent:
             state_size (int): dimension of each state
             action_size (int): dimension of each action
             random_seed (int): random seed
+            num_agents (int): number of how many agents are training
+            buffer_size (int): memory buffer size for ReplayBuffer
+            batch_size (int): batch size for sampling to learn
+            gamma (float): discount factor
+            tau (float): interpolation parameter
+            lr_actor (float): learning rate for Actor NN
+            lr_critic (float): learning rate for Critic NN
+            fc1_units (int): first hidden layer size
+            fc2_units (int): second hidden layer size
+            weight_decay (float): decay for Layer 2
+            noise_mu (float): average factor for Ornstein-Uhlenbeck noise
+            noise_theta (float): theta factor calculating Ornstein-Uhlenbeck noise
+            noise_sigma (float): initial sigma factor to calculate Ornstein-Uhlenbeck noise
+            noise_sigma_min (float): minimum sigma factor to calculate Ornstein-Uhlenbeck noise
+            noise_sigma_decay (float): % to update sigma to calculate Ornstein-Uhlenbeck noise
         """
         self.state_size = state_size
         self.action_size = action_size
@@ -50,13 +67,13 @@ class Agent:
         self.WEIGHT_DECAY = weight_decay
 
         # Actor Network (w/ Target Network)
-        self.actor_local = Actor(state_size, action_size, random_seed).to(device)
-        self.actor_target = Actor(state_size, action_size, random_seed).to(device)
+        self.actor_local = Actor(state_size, action_size, random_seed, fc1_units=fc1_units, fc2_units=fc2_units).to(device)
+        self.actor_target = Actor(state_size, action_size, random_seed, fc1_units=fc1_units, fc2_units=fc2_units).to(device)
         self.actor_optimizer = optim.Adam(self.actor_local.parameters(), lr=lr_actor)
 
         # Critic Network (w/ Target Network)
-        self.critic_local = Critic(state_size, action_size, random_seed).to(device)
-        self.critic_target = Critic(state_size, action_size, random_seed).to(device)
+        self.critic_local = Critic(state_size, action_size, random_seed, fc1_units=fc1_units, fc2_units=fc2_units).to(device)
+        self.critic_target = Critic(state_size, action_size, random_seed, fc1_units=fc1_units, fc2_units=fc2_units).to(device)
         self.critic_optimizer = optim.Adam(self.critic_local.parameters(), lr=lr_critic, weight_decay=weight_decay)
 
         # Noise process
@@ -68,9 +85,10 @@ class Agent:
     def step(self, state, action, reward, next_state, done):
         """Save experience in replay memory, and use random sample from buffer to learn."""
         # Save experience / reward
-#        self.memory.add(state, action, reward, next_state, done)
-
-        for i in range(state.shape[0]): #added to save states separtly agent by agent
+        # old
+        # self.memory.add(state, action, reward, next_state, done)
+        # added to save states agent by agent
+        for i in range(state.shape[0]):
             self.memory.add(state[i], action[i], reward[i], next_state[i], done[i])
 
         # Learn, if enough samples are available in memory
