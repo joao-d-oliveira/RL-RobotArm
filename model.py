@@ -4,6 +4,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 def hidden_init(layer):
     fan_in = layer.weight.data.size()[0]
     lim = 1. / np.sqrt(fan_in)
@@ -68,6 +70,8 @@ class Critic(nn.Module):
         self.fc3.weight.data.uniform_(-3e-3, 3e-3)
 
     def forward(self, state, action):
+        state = state.to(device)
+        action = action.to(device)
         """Build a critic (value) network that maps (state, action) pairs -> Q-values."""
         xs = F.relu(self.fcs1(state))
         x = torch.cat((xs, action), dim=1)
