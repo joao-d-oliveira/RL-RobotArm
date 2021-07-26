@@ -49,7 +49,7 @@ The state for the first agent looks like: [ 0.00000000e+00 -4.00000000e+00  0.00
 For submission, one didn't need to solve with One and Multiple agents, but I tried to 
 show that it was easy to do so with few adaptions to the code.
 And wanted to compare the performance of the algorithm with the different environments as indicated at 
-the [Report.md](https://github.com/joao-d-oliveira/RL-SmartAgent-BananaGame/blob/main/Report.md). 
+the [Report.md](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Report.md). 
 
 #### Option 1: Solve the First Version
 
@@ -70,7 +70,7 @@ For this project, we can either use:
 - The second version contains 20 identical agents, each with its own copy of the environment.  
 
 For this we used the DDPG algorithm for both the 1st and 2nd version, so with 1 or 20 agents, and noticed that with the Multi version the results are much faster
-(see [Report.md](https://github.com/joao-d-oliveira/RL-SmartAgent-BananaGame/blob/main/Report.md) for further info)
+(see [Report.md](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Report.md) for further info)
 
 With the optional challenge [Crawler](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#crawler), 
 we see that DDPG is not enough (or too slow) to converge, so for this I tried to search for another algorithm such 
@@ -83,13 +83,13 @@ as [PPO](https://arxiv.org/pdf/1707.06347.pdf).
 Before starting any of the environments you need to install 
 `unityagents` package from Unity (version 0.4.0).
 As this is an old version, the best is to download the
-[python folder](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/pythonx) and run 
+[python folder](https://github.com/joao-d-oliveira/RL-RobotArm/tree/master/python) and run 
 `cd python; pip install  .` to install it manually.
 
 #### For Reacher Environment 
 
 1. You need to have installed the requirements (specially mlagents==0.4.0).
-   Due to deprecated libraries, I've included a [python folder](https://github.com/joao-d-oliveira/RL-SmartAgent-BananaGame/tree/main/python) which will help
+   Due to deprecated libraries, I've included a [python folder](https://github.com/joao-d-oliveira/RL-RobotArm/tree/master/python) which will help
    with installation of the system.
       - Clone the repository: `git clone https://github.com/joao-d-oliveira/RL-RobotArm.git`
       - Go to python folder: `cd RL-RobotArm/python`
@@ -139,25 +139,25 @@ Each action is a vector with four numbers, corresponding to torque applicable to
 ### Files
 
 #### Code
-1. [utils/agent_reacher_ddpg.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/utils/agent_reacher_ddpg.py) - Agent class containing methods to help the agent learn and acquire knowledge using DDPG algorithm
-1. [utils/model_reacher.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/utils/model_reacher.py) - DDQG model of Actor and Critic class setup 
-1. [Continuous_Control.ipynb](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/Continuous_Control.ipynb) - Jupyter Notebook for running experiment, for Reacher Control
+1. [utils/agent_reacher_ddpg.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/utils/agent_reacher_ddpg.py) - Agent class containing methods to help the agent learn and acquire knowledge using DDPG algorithm
+1. [utils/model_reacher.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/utils/model_reacher.py) - DDQG model of Actor and Critic class setup 
+1. [Continuous_Control.ipynb](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Continuous_Control.ipynb) - Jupyter Notebook for running experiment, for Reacher Control
 ---
-1. [utils/agent_crawler_ppo.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/utils/agent_crawler_ppo.py) - Agent class containing methods to help the agent learn and acquire knowledge using PPO algorithm for Crawler environment
-1. [utils/model_crawler.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/utils/model_crawler.py) - PPO model of Actor and Critic class setup 
-1. [Crawler.ipynb](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/Crawler.ipynb) - Jupyter Notebook for running experiment, for Crawler Control
+1. [utils/agent_crawler_ppo.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/utils/agent_crawler_ppo.py) - Agent class containing methods to help the agent learn and acquire knowledge using PPO algorithm for Crawler environment
+1. [utils/model_crawler.py](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/utils/model_crawler.py) - PPO model of Actor and Critic class setup 
+1. [Crawler.ipynb](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Crawler.ipynb) - Jupyter Notebook for running experiment, for Crawler Control
 
 #### Documentation
-1. [README.md](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/README.md) - This file
-1. [Report.md](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/Report.md) - Detailed Report on the project
+1. [README.md](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/README.md) - This file
+1. [Report.md](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Report.md) - Detailed Report on the project
 
 #### Models
-All models are saved on the subfolder ([saved_models](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/saved_models)).
-For example, [checkpoint_Mult_actor.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/saved_models/checkpoint_Mult_actor.pth) 
-and [checkpoint_Mult_critic.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/saved_models/checkpoint_Mult_critic.pth) are 
+All models are saved on the subfolder ([saved_models](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/saved_models)).
+For example, [checkpoint_Mult_actor.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/saved_models/checkpoint_Mult_actor.pth) 
+and [checkpoint_Mult_critic.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/saved_models/checkpoint_Mult_critic.pth) are 
 files which has been saved upon success of achieving the goal, and
-[finished_Reacher_Mult_actor.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/saved_models/finished_Reacher_Mult_actor.pth) 
-and [finished_Reacher_Mult_critic.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/saved_models/finished_Reacher_Mult_critic.pth) 
+[finished_Reacher_Mult_actor.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/saved_models/finished_Reacher_Mult_actor.pth) 
+and [finished_Reacher_Mult_critic.pth](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/saved_models/finished_Reacher_Mult_critic.pth) 
 are the end model after runing all episodes.
 
 ### Running Reacher training
@@ -165,7 +165,7 @@ are the end model after runing all episodes.
 #### Structure of Notebook
 
 The structure of the notebook follows the following:
-> 1. Initial Setup: _(setup for parameters of experience, check [report](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/Report.md) for more details)_ <br>
+> 1. Initial Setup: _(setup for parameters of experience, check [report](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Report.md) for more details)_ <br>
 > 2. Continuous Control <br>
 > 2.1 Start the Environment: _(load environment for the game)_<br>
 > 2.2 Helper Functions: _(functions to help the experience, such as Optuna, DDPG, ...)_<br>
@@ -179,9 +179,8 @@ One or Multiple agents by turning at `SETUP` dictionary:
 
 #### Running
 
-After fulling the requirements on section [Getting Started](https://github.com/joao-d-oliveira/RL-RobotArm#getting-started) and at 
-[requirements.txt](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/requirements.txt) 
-0. Load Jupyter notebook [Navigation.ipynb](https://github.com/joao-d-oliveira/RL-SmartAgent-BananaGame/blob/main/Navigation.ipynb)
+After fulling the requirements on section [Getting Started](https://github.com/joao-d-oliveira/RL-RobotArm#getting-started) 
+0. Load Jupyter notebook [Continuous_Control.ipynb](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Continuous_Control.ipynb)
 1. Adapt dictionary `SETUP = {` with the desired paramenters
 2. Load the environment. Running sections: 
    > 1 Initial Setup <br>
@@ -190,8 +189,7 @@ After fulling the requirements on section [Getting Started](https://github.com/j
 
 ### Running Crawler Environment
 
-After fulling the requirements on section [Getting Started](https://github.com/joao-d-oliveira/RL-RobotArm#getting-started) and at 
-[requirements.txt](https://github.com/joao-d-oliveira/RL-RobotArm/blob/main/requirements.txt) 
-0. Load Jupyter notebook [Crawler.ipynb](https://github.com/joao-d-oliveira/RL-SmartAgent-BananaGame/blob/main/Crawler.ipynb)
+After fulling the requirements on section [Getting Started](https://github.com/joao-d-oliveira/RL-RobotArm#getting-started) 
+0. Load Jupyter notebook [Crawler.ipynb](https://github.com/joao-d-oliveira/RL-RobotArm/blob/master/Crawler.ipynb)
 1. Run all cells, no special options needed
 
