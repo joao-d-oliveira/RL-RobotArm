@@ -10,6 +10,11 @@ def hidden_init(layer):
     return (-lim, lim)
 
 
+###  Taken from GIT
+###  https://github.com/JacobXPX/Crawler_using_PPO
+###
+
+
 class Actor(nn.Module):
     """Actor (Policy) Model."""
 
@@ -52,7 +57,7 @@ class Actor(nn.Module):
 
         x = F.relu(self.fc2a(self.fc2a_bn(x)))
 
-        return F.tanh(self.fc3(self.fc3_bn(x)))
+        return torch.tanh(self.fc3(self.fc3_bn(x)))
 
 
 class Critic(nn.Module):
@@ -96,7 +101,7 @@ class Critic(nn.Module):
 
         x = F.relu(self.fc2a(self.fc2a_bn(x)))
 
-        return F.tanh(self.fc3(self.fc3_bn(x)))
+        return torch.tanh(self.fc3(self.fc3_bn(x)))
 
 
 class PPO_Actor_Critic(nn.Module):

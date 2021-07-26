@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from collections import namedtuple, deque
-from model_crawler import PPO_Actor_Critic
+from utils.model_crawler import PPO_Actor_Critic
 
 BATCH_SIZE = 1024         # minibatch size
 MIN_BATCH_NUM = 32        # the minimum number of batch in each learning epoch
@@ -19,6 +19,10 @@ ENTROPY_COEFFICENT = 0.01 # coefficent of entropy
 NOISE_REDUCE = 0.999      # reduce the threshold of std in action
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+###  Taken from GIT
+###  https://github.com/JacobXPX/Crawler_using_PPO
+###
 
 
 class Agent:
