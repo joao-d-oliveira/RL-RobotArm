@@ -6,7 +6,7 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 
-from model_reacher import Actor, Critic
+from utils.model_reacher import Actor, Critic
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
